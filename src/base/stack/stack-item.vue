@@ -28,13 +28,15 @@
       <div class="item-hot">
         <div class="top">
           <span><img :src="houseHome" alt=""></span>
-          <span>222</span>
-          <span>222</span>
+          <span>
+            <rate :num="4" :text="'该房源很火'"></rate>
+          </span>
         </div>
         <div class="bottom">
           <span><img :src="houseHot" alt=""></span>
-          <span>e33</span>
-          <span>e33</span>
+          <span>
+            <rate :num="4" :type="'star'" :text="'该小区很火'"></rate>
+          </span>
         </div>
       </div>
       <div class="transverse-ine">
@@ -47,6 +49,7 @@
   </div>
 </template>
 <script>
+import Rate from 'base/rate/rate'
 export default {
   props: {
     data: {
@@ -60,6 +63,9 @@ export default {
       houseHome: require('common/image/house-home.png'),
       houseHot: require('common/image/house-hot.png')
     }
+  },
+  components: {
+    Rate
   }
 }
 </script>
@@ -130,12 +136,14 @@ export default {
   .top, .bottom
     display: flex
     justify-content: center
+    margin: .2rem 0
     span
       padding: 0 5px
-      line-height: 2
+      line-height: 1.5
+      vertical-align: top
       img
-        width: 70%
-        vertical-align: text-top
+        width: 80%
+        vertical-align: bottom
 .transverse-ine
   text-align: center
   height: 30px

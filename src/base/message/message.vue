@@ -1,5 +1,5 @@
 <template>
-  <div id="message" :class="{transit: isTransition}" ref="msg" :style="{transform: `translateY(${translate}px)`, marginLeft: -left/2 + 'px'}">
+  <div id="message" :class="{transit: isTransition}" ref="msg" :style="{transform: `translateY(${translate}px)`}">
     <i class="icon-close" @click="hide"></i>
     <div class="content">
       <slot></slot>
@@ -11,22 +11,21 @@
 export default {
   data: () => ({
     left: 0,
-    translate: 108,
+    translate: 0,
     isTransition: false
   }),
   mounted () {
     setTimeout(() => {
       this.hide()
-      this.left = this.$refs.msg.offsetWidth
-      setTimeout(() => {
-        this.isTransition = true
-        this.translate = 0
-      }, 500)
     }, 0)
   },
   methods: {
     hide () {
       this.translate = this.$refs.msg.offsetHeight
+    },
+    show () {
+      this.isTransition = true
+      this.translate = 0
     }
   }
 }
@@ -38,13 +37,15 @@ export default {
   display: flex;
   flex-direction: column;
   background: #fff;
-  padding: 6px 6px 20px 20px;
   border-radius: 6px;
   position: fixed;
+  padding: 4px 4px 10px 0
   bottom: 0;
+  margin: 0 10px
   max-height: 1000px;
-  width: 90%;
-  left: 50%;
+  left: 0
+  right: 0
+  z-index: 2000
 
   .icon-close {
     align-self: flex-end;
@@ -53,14 +54,14 @@ export default {
   }
 
   .content {
-    padding: 10px 16px 10px 0;
+    padding: 3px 15px 5px 0;
   }
 }
 
 .transit {
-  transition: all 1s;
-  -moz-transition: all 1s;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 1s;
+  transition: all .3s;
+  -moz-transition: all .3s;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
 }
 </style>

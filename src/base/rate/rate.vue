@@ -33,7 +33,7 @@ export default {
 
 .text {
   color: rgba(0, 0, 0, 0.6);
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   margin-left: 0.3rem;
 }
 </style>

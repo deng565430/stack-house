@@ -60,7 +60,8 @@ export default {
         lastOpacity: 0,
         swipe: false,
         zIndex: 10
-      }
+      },
+      concatNum: 1
     }
   },
   computed: {
@@ -182,6 +183,9 @@ export default {
       } else {
         // 左滑
       }
+      // 滑动触发消息
+      let num = this.concatNum++
+      this.$emit('sendMsg', num)
       // 判断滑动数量是否超过80% 是则请求数据
       if (this.pages.length - this.temporaryData.currentPage <= 5) {
         this.$emit('nextDataList')
