@@ -1,15 +1,48 @@
 <template>
   <div class="item">
-    <img class="item-img" :src="'http://sofmanager.fangsir007.com/image/' + data.img" alt="">
-    <div class="item-top">
-      <div class="item-addr">
-        <h1>{{data.title}}</h1>
-        <p>{{data.addr}}</p>
+    <div class="item-img" >
+      <img :src="'http://sofmanager.fangsir007.com/image/' + data.img" alt="">
+      <div class="img-album"><i class="icon-images"></i> 8</div>
+    </div>
+    <div class="item-cover">
+      <p><span>581</span>万 <span>99.81</span>平方米 <strong>两室两厅 南北朝向</strong></p>
+    </div>
+    <div class="small-img">
+      <div>
+        <img :src="'http://sofmanager.fangsir007.com/image/' + data.img" alt="">
+      </div>
+      <div>
+        <img :src="'http://sofmanager.fangsir007.com/image/' + data.img" alt="">
+      </div>
+      <div>
+        <img :src="'http://sofmanager.fangsir007.com/image/' + data.img" alt="">
+      </div>
+      <div>
+        <img :src="'http://sofmanager.fangsir007.com/image/' + data.img" alt="">
       </div>
     </div>
-    <div class="item-comm">
-      <div class="top">结佣标准</div>
-      <div class="buttom">{{data.price}}<i class="icon-back"></i></div>
+    <div class="item-top">
+      <div class="item-addr">
+        <h1>{{data.title}} <span> {{data.addr}}</span></h1>
+      </div>
+      <div class="item-hot">
+        <div class="top">
+          <span><img :src="houseHome" alt=""></span>
+          <span>222</span>
+          <span>222</span>
+        </div>
+        <div class="bottom">
+          <span><img :src="houseHot" alt=""></span>
+          <span>e33</span>
+          <span>e33</span>
+        </div>
+      </div>
+      <div class="transverse-ine">
+        <img :src="transverseLine" alt="">
+      </div>
+      <div class="item-desc">
+        <p>近7号线真图实价不来虚的、多层房一楼双南双天井、万里实验学校</p>
+      </div>
     </div>
   </div>
 </template>
@@ -20,48 +53,97 @@ export default {
       type: Object,
       default: () => {}
     }
+  },
+  data () {
+    return {
+      transverseLine: require('common/image/transverse-line.png'),
+      houseHome: require('common/image/house-home.png'),
+      houseHot: require('common/image/house-hot.png')
+    }
   }
 }
 </script>
 
 <style  scoped lang="stylus" rel="stylesheet/stylus">
+@import "~common/stylus/variable"
 .item
-.item-img
-  width: 100%
-  display: block
-  pointer-events: none
-  border-radius: 5px
-.item-top
-  background: #fbf9f9
-  padding: 10px
-.item-addr
+  height: 100%
   background: #fff
+  position: relative
+.item-img
+  height: 9.5rem
+  overflow: hidden
+  position: relative
+  .img-album
+    position: absolute
+    left: 15px
+    top: 15px
+    padding: 8px 10px
+    background: rgba(0, 0, 0, .5)
+    border-radius: 5px
+    text-align: center
+    font-size: $font-size-medium-x
+    color: #fff
+  img
+    width: 100%
+    height: 100%
+.small-img
+  display: flex
+  padding: 3px
+  div
+    padding-left: 2px
+    flex: 1
+    &:first-child
+      padding-left: 0
+    img
+      width: 100%
+.item-cover
+  position: absolute
+  height: 2rem
+  background: rgba(0, 0, 0 .5)
+  right: 0
+  left: 0
+  top: 7.5rem
+  p
+    color: #fff
+    line-height: 2rem
+    font-weight: 100
+    font-size: 0.8rem
+    span
+      color: #e96d26
+.item-top
+  background: #fff
+  padding: 10px
+
+.item-addr
   border-radius: 5px
   h1
+    text-align: center
     margin: 0
     line-height: 2
-    font-size: 24px
-  p
-    margin: 0
-.item-comm
+    font-size: 25px
+    font-weight: bold
+    span
+      font-size: $font-size-large
+.item-hot
+  font-size: $font-size-medium-x
+  .top, .bottom
+    display: flex
+    justify-content: center
+    span
+      padding: 0 5px
+      line-height: 2
+      img
+        width: 70%
+        vertical-align: text-top
+.transverse-ine
   text-align: center
-  border-radius: 10px
-  overflow: hidden
-  margin: 10px 10px 0
-  .top
-    display: block
+  height: 30px
+  img
     width: 100%
-    background: #ff5f00
-    line-height: 35px
-    color: #fff
-    font-size: 16px
-  .buttom
-    display: block
-    text-align: left
-    line-height: 30px
-    text-indent: 2em
-    border-radius: 0 0 10px 10px
-    padding: 10px
-    border: 1px solid #ccc
-    border-top: none
+.item-desc
+  text-align: left
+  line-height: 1.5
+  font-size: $font-size-medium
+  background: #fff
 </style>

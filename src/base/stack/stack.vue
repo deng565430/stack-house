@@ -148,9 +148,12 @@ export default {
     touchend (e) {
       this.temporaryData.tracking = false
       this.temporaryData.animation = true
+
+      let startX = this.basicdata.start.x || 0
+      let endX = this.basicdata.end.x || 0
       // 滑动结束，触发判断
       // 判断划出面积是否大于0.4
-      if (this.offsetRatio >= 0.4) {
+      if (Math.abs(startX - endX) >= 40 && this.offsetRatio >= 0.4) {
         // 计算划出后最终位置
         let ratio = Math.abs(this.temporaryData.posheight / this.temporaryData.poswidth)
         this.temporaryData.poswidth = this.temporaryData.poswidth >= 0 ? this.temporaryData.poswidth + 200 : this.temporaryData.poswidth - 200
@@ -174,9 +177,10 @@ export default {
       this.temporaryData.lastZindex = 20
       // 这个做判断  > 0 右滑  < 0 左滑
       if (this.temporaryData.lastPosWidth > 0) {
-        // 左滑
-      } else {
         // 右滑
+        this.$emit('collectConcat')
+      } else {
+        // 左滑
       }
       // 判断滑动数量是否超过80% 是则请求数据
       if (this.pages.length - this.temporaryData.currentPage <= 5) {
@@ -341,46 +345,7 @@ export default {
     -ms-user-select: none
     user-select: none
     pointer-events: auto
-    border: 1px solid #eee
-    .item
-    .item-img
-      width: 100%
-      display: block
-      pointer-events: none
-      border-radius: 5px
-    .item-top
-      background: #fbf9f9
-      padding: 10px
-    .item-addr
-      background: #fff
-      border-radius: 5px
-      h1
-        margin: 0
-        line-height: 2
-        font-size: 24px
-      p
-        margin: 0
-    .item-comm
-      text-align: center
-      border-radius: 10px
-      overflow: hidden
-      margin: 10px 10px 0
-      .top
-        display: block
-        width: 100%
-        background: #ff5f00
-        line-height: 35px
-        color: #fff
-        font-size: 16px
-      .buttom
-        display: block
-        text-align: left
-        line-height: 30px
-        text-indent: 2em
-        border-radius: 0 0 10px 10px
-        padding: 10px
-        border: 1px solid #ccc
-        border-top: none
+    border-bottom: 1px solid #eee
   .stack-container li.move-back
     /* http://matthewlein.com/ceaser/ */
     -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.470, 1); /* older webkit */
