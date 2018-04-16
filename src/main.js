@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+
+/* eslint-disble no-unused-vars */
 import './config/rem'
 
 import 'common/stylus/index.styl'

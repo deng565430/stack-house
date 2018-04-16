@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     hide () {
-      this.translate = this.$refs.msg.offsetHeight
+      this.translate = this.$refs.msg.offsetHeight + 10
     },
     show () {
       this.isTransition = true

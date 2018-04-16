@@ -24,7 +24,7 @@ export default {
 
 [class^='icon-'], [class*=' icon-'] {
   color: #ccc;
-  font-size: 1rem;
+  font-size: .8rem;
 }
 
 .active {
@@ -33,7 +33,7 @@ export default {
 
 .text {
   color: rgba(0, 0, 0, 0.6);
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   margin-left: 0.3rem;
 }
 </style>

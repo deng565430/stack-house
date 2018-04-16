@@ -82,6 +82,8 @@ export default {
       return ratio
     }
   },
+  created () {
+  },
   mounted () {
     // 绑定事件
     this.$on('next', () => {
@@ -154,7 +156,7 @@ export default {
       let endX = this.basicdata.end.x || 0
       // 滑动结束，触发判断
       // 判断划出面积是否大于0.4
-      if (Math.abs(startX - endX) >= 40 && this.offsetRatio >= 0.4) {
+      if (Math.abs(startX - endX) >= 30 && this.offsetRatio >= 0.4) {
         // 计算划出后最终位置
         let ratio = Math.abs(this.temporaryData.posheight / this.temporaryData.poswidth)
         this.temporaryData.poswidth = this.temporaryData.poswidth >= 0 ? this.temporaryData.poswidth + 200 : this.temporaryData.poswidth - 200
@@ -282,7 +284,7 @@ export default {
       if (this.inStack(index, currentPage)) {
         let perIndex = index - currentPage > 0 ? index - currentPage : index - currentPage + length
         style['opacity'] = '1'
-        style['transform'] = 'translate3D(0,0,' + -1 * 60 * (perIndex - this.offsetRatio) + 'px' + ')'
+        style['transform'] = 'translate3D(0,0,' + -1 * 30 * (perIndex - this.offsetRatio) + 'px' + ')'
         style['zIndex'] = visible - perIndex
         if (!this.temporaryData.tracking) {
           style[this.temporaryData.prefixes.transition + 'TimingFunction'] = 'ease'
@@ -296,7 +298,7 @@ export default {
         style[this.temporaryData.prefixes.transition + 'Duration'] = 300 + 'ms'
       } else {
         style['zIndex'] = '-1'
-        style['transform'] = 'translate3D(0,0,' + -1 * visible * 60 + 'px' + ')'
+        style['transform'] = 'translate3D(0,0,' + -1 * visible * 30 + 'px' + ')'
         style['opacity'] = '0'
       }
       return style
