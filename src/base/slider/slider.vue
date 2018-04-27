@@ -34,13 +34,13 @@ export default {
       default: '12px'
     }
   },
-  data() {
+  data () {
     return {
       dots: [],
       currentPageIndex: 0
     }
   },
-  mounted() {
+  mounted () {
     setTimeout(() => {
       this._setSliderWidth()
       this._initDots()
@@ -59,19 +59,19 @@ export default {
       this.slider.refresh()
     })
   },
-  activated() {
+  activated () {
     if (this.autoPlay) {
       this._play()
     }
   },
-  deactivated() {
+  deactivated () {
     clearTimeout(this.timer)
   },
-  beforeDestroy() {
+  beforeDestroy () {
     clearTimeout(this.timer)
   },
   methods: {
-    _setSliderWidth(isResize) {
+    _setSliderWidth (isResize) {
       this.children = this.$refs.sliderGroup.children
 
       let width = 0
@@ -88,7 +88,7 @@ export default {
       }
       this.$refs.sliderGroup.style.width = width + 'px'
     },
-    _initSlider() {
+    _initSlider () {
       this.slider = new BScroll(this.$refs.slider, {
         scrollX: true,
         scrollY: false,
@@ -102,7 +102,7 @@ export default {
       this.slider.on('scrollEnd', () => {
         let pageIndex = this.slider.getCurrentPage().pageX
         if (this.loop) {
-          // pageIndex -= 1
+          pageIndex -= 1
         }
         this.currentPageIndex = pageIndex
 
@@ -117,11 +117,11 @@ export default {
         }
       })
     },
-    _initDots() {
+    _initDots () {
       this.dots = new Array(this.children.length)
       console.log(this.dots)
     },
-    _play() {
+    _play () {
       let pageIndex = this.currentPageIndex + 1
       if (this.loop) {
         pageIndex += 1
@@ -142,7 +142,6 @@ export default {
 
   .slider-group {
     position: relative;
-    overflow: hidden;
     white-space: nowrap;
 
     .slider-item {

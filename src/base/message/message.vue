@@ -17,12 +17,17 @@ export default {
   mounted () {
     setTimeout(() => {
       this.hide()
+      setTimeout(() => {
+        this.show()
+      }, 0)
     }, 0)
   },
   methods: {
+    // 隐藏消息
     hide () {
       this.translate = this.$refs.msg.offsetHeight
     },
+    // 显示消息
     show () {
       this.isTransition = true
       this.translate = 0

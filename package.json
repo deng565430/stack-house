@@ -14,7 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "better-scroll": "^1.9.1",
+    "better-scroll": "^0.1.15",
     "vue": "^2.5.2",
     "vue-lazyload": "^1.2.2",
     "vue-router": "^3.0.1",

@@ -3,6 +3,7 @@
     <div class="title">
       <i class="icon-back" @click.stop="back"></i>
       <h1>{{title}}</h1>
+      <i class="icon-zhuanfa" v-if="share"></i>
     </div>
   </div>
 </template>
@@ -13,6 +14,10 @@ export default {
     title: {
       type: String,
       default: ''
+    },
+    share: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -28,8 +33,11 @@ export default {
   text-align: center;
   height: 50px;
   line-height: 50px;
-  background: rgba(243, 107, 67, 0.8);
   display: flex;
+  background: -webkit-linear-gradient(left, #ee634e, #f6722e);
+  background: -o-linear-gradient(right, #ee634e, #f6722e);
+  background: -moz-linear-gradient(right, #ee634e, #f6722e);
+  background: linear-gradient(to right, #ee634e, #f6722e);
 
   i {
     width: 50px;
